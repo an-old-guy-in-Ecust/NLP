@@ -11,9 +11,15 @@
 
 具体效果如下表，效果由严格匹配的f1值度量与分类结果的f1值取平均
 
-| NER        | 情感分类 | 超参数设置 | f1 score|
-|------------|------| ---- | ----|
-| BiLSTM-CRF | LR   | 无|0.10268|
-| BiLSTM-CRF | BERT |无特殊设置|0.35841|
-| BERT-BiLSTM-CRF| BERT|BATCH_SIZE=4|0.41976|
-| BERT-BiLSTM-CRF|BERT|BATCH_SIZE=1|0.56504|
+| NER             | 超参数设置               | f1 score |
+|-----------------|---------------------|----------|
+| BiLSTM-CRF      | 无                   | 0.10268  |
+| BERT-BiLSTM-CRF | BATCH_SIZE=4        | 0.261014 |
+| BERT-BiLSTM-CRF | BATCH_SIZE=1        | 0.302745 |
+| BERT-BiLSTM-CRF | BATCH_SIZE=1,加入对抗训练 | 0.35199  |     
+
+运行环境：Colab平台 GPU免费版
+代码reference
+
+1. https://blog.csdn.net/weixin_44750512/article/details/128460220?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-3-128460220-blog-125541213.pc_relevant_3mothn_strategy_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-3-128460220-blog-125541213.pc_relevant_3mothn_strategy_recovery&utm_relevant_index=6
+2. https://gitcode.net/mirrors/hemingkx/cluener2020/-/tree/main/BERT-LSTM-CRF
