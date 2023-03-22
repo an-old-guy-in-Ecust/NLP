@@ -10,7 +10,7 @@ import torch
 import matplotlib.pyplot as plt
 from torch.nn.utils import clip_grad_norm_
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-from transformers import BertTokenizer, BertForSequenceClassification, AdamW
+from transformers import BertTokenizer, BertForSequenceClassification, AdamW, ErnieForSequenceClassification
 from transformers import get_linear_schedule_with_warmup
 import warnings
 
@@ -60,7 +60,7 @@ total_targets.shape
 
 # 从预训练模型中加载bert-base-chinese
 # [UNK] 特征  [CLS]起始 [SEP]结束
-tokenizer = BertTokenizer.from_pretrained('bert-base-chinese', cache_dir="/root/bert/transformer_file/")
+tokenizer = BertTokenizer.from_pretrained('nghuyong/ernie-3.0-base-zh', cache_dir="/root/bert/transformer_file/")
 tokenizer
 
 # In[5]:
@@ -199,7 +199,7 @@ print('len(train_dataloader)=', len(train_dataloader))  # 500
 
 
 # 加载预训练模型， num_labels表示3个分类，好评和差评, 会下载模型 大约412M
-model = BertForSequenceClassification.from_pretrained("bert-base-chinese", num_labels=3)
+model = ErnieForSequenceClassification.from_pretrained("nghuyong/ernie-3.0-base-zh", num_labels=3)
 # 使用GPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # model需要放到GPU中
